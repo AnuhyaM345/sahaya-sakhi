@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: sahaya-sakhi-backend
+    env: python
+    plan: free
+    region: oregon
+    buildCommand: pip install -r backend/requirements.txt
+    startCommand: uvicorn backend.main:app --host 0.0.0.0 --port 8000
+    envVars:
+      - key: DATABASE_URL
+        value: postgresql+asyncpg://postgres:anuhya3776@localhost:5432/sahaya_sakhi
+      - key: SYNC_DATABASE_URL
+        value: postgresql+psycopg2://postgres:anuhya3776@localhost:5432/sahaya_sakhi
+      - key: ASSEMBLY_API_KEY
+        value: 026b56f62e8d4e698fcf140b65ce4fdd
+      - key: ELEVENLABS_API_KEY
+        value: sk_675d815aa08b8fdf9f186f0e7be45bb2a8a5f44c157056d8
+      - key: ELEVENLABS_VOICE_ID
+        value: 1m00Tcm4TlvDq8ikWAM
+      - key: OPENROUTER_API_KEY
+        value: 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
