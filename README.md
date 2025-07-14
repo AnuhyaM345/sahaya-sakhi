@@ -1,5 +1,12 @@
 # 🌸 Sahaya Sakhi – An AI-powered Women’s Empowerment Platform
 
+![MIT License](https://img.shields.io/badge/License-MIT-green.svg)
+![GitHub last commit](https://img.shields.io/github/last-commit/AnuhyaM345/sahaya-sakhi)
+![GitHub repo size](https://img.shields.io/github/repo-size/AnuhyaM345/sahaya-sakhi)
+![GitHub issues](https://img.shields.io/github/issues/AnuhyaM345/sahaya-sakhi)
+![GitHub pull requests](https://img.shields.io/github/issues-pr/AnuhyaM345/sahaya-sakhi)
+![GitHub stars](https://img.shields.io/github/stars/AnuhyaM345/sahaya-sakhi?style=social)
+
 **Sahaya Sakhi** is an intelligent, voice-enabled web platform designed to empower women by providing **legal assistance**, **personalized talent recognition**, and **financial support guidance** based on government schemes in India.
 
 ---
