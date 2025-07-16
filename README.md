@@ -96,19 +96,22 @@
    git clone https://github.com/AnuhyaM345/sahaya-sakhi.git
    cd sahaya-sakhi
 
-2. Set up Python backend:
-    ```yaml
-    cd backend
+2. Set up Frontend:
+    ```bash
+    cd frontend
+    npm install
+    npm run dev
+    
+- Frontend runs on: http://localhost:3000
+
+3. Set up Python Backend:
+    ```bash
+    cd ../backend
     python -m venv venv
     venv\Scripts\activate
     pip install -r requirements.txt
     uvicorn main:app --reload
-
-3. Set up frontend:
-    ```bash
-    cd ../frontend
-    npm install
-    npm run dev
+- Backend runs on: http://localhost:8000
 
 - Make sure to configure your .env files with API keys and DB URLs.
 
