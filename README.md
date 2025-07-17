@@ -106,14 +106,79 @@
 
 3. Set up Python Backend:
     ```bash
-    cd ../backend
+    cd backend
     python -m venv venv
-    venv\Scripts\activate
+    venv\Scripts\activate  # or source venv/bin/activate on Linux/macOS
     pip install -r requirements.txt
     uvicorn main:app --reload
 - Backend runs on: http://localhost:8000
 
-- Make sure to configure your .env files with API keys and DB URLs.
+---
+
+## 🛠️ Setting Up the PostgreSQL Database
+
+### 1. 🐘 Install PostgreSQL
+Ensure PostgreSQL is installed and running on your system.  
+You can download it from: [https://www.postgresql.org/download/](https://www.postgresql.org/download/)
+
+---
+
+### 2. 📦 Install Required Python Packages (IF NOT DONE BEFORE)
+
+- From the `backend/` directory, activate your virtual environment and install the required dependencies:
+
+    ```bash
+    cd backend
+    python -m venv venv
+    venv\Scripts\activate   # or source venv/bin/activate on Linux/macOS
+    pip install -r requirements.txt
+
+---
+
+3. 🧪 Create the Database
+- You can create a PostgreSQL database using the psql CLI or a GUI tool like pgAdmin:
+
+
+        CREATE DATABASE sahaya_sakhi;
+
+---
+
+4. 📁 Configure Environment Variables
+
+- Create a .env file in the backend/ directory with the following content:
+
+
+       DATABASE_URL=postgresql+asyncpg://username:password@localhost:5432/sahaya_sakhi
+
+Replace:
+
+username → your PostgreSQL username
+
+password → your PostgreSQL password
+
+5432 → your PostgreSQL port (default is 5432 unless changed)
+
+✅ Example:
+
+      DATABASE_URL=postgresql+asyncpg://postgres:admin123@localhost:5432/sahaya_sakhi
+
+---
+
+5. 📜 Run Alembic Migrations
+From the backend/ directory, apply the existing migrations to set up your schema:
+
+    ```bash
+    alembic upgrade head
+
+- ⚠️ Do not run "alembic revision --autogenerate" unless you're creating new migrations.
+The existing migration files are already included and version-controlled.
+
+6. ✅ Done!
+Your database is now fully set up and connected 🎉
+You can now start the FastAPI server:
+
+    ```bash
+    uvicorn main:app --reload
 
 ---
 
