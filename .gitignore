@@ -8,7 +8,13 @@ __pycache__/
 *.db
 .env
 venv/
-alembic/
+
+# === Alembic ===
+alembic/*
+!alembic/env.py
+!alembic/script.py.mako
+!alembic/versions/
+
 migrations/
 
 # === Node.js / Next.js ===
