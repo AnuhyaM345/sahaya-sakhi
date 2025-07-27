@@ -254,6 +254,14 @@ export default function ChatPage() {
           </div>
         </div>
       </main>
+
+      {/* Simple Centered Footer */}
+      <footer className="text-center py-4 text-sm text-gray-600">
+        © {new Date().getFullYear()} Sahaya Sakhi. All rights reserved to{' '}
+        <span className="font-semibold text-[#5C068C]">Anuhya Mattaparthi</span>.
+      </footer>
+      
     </>
   );
 }
+

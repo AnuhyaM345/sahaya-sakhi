@@ -1,4 +1,3 @@
-//frontend/app/login/page.tsx
 'use client';
 
 import { useState } from 'react';
@@ -23,21 +22,17 @@ export default function LoginPage() {
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
         },
-        withCredentials: true, 
-      });      
+        withCredentials: true,
+      });
 
       const token = res.data.access_token;
       localStorage.setItem("token", token);
 
-      // Decode the JWT to get user info
       const decoded = JSON.parse(atob(token.split(".")[1]));
-      const userId = decoded.id; // Assuming the JWT has the `id` field
-
-      // Store userId in localStorage
+      const userId = decoded.id;
       localStorage.setItem("userId", userId);
 
       const role = decoded.role;
-
       if (role === "admin") {
         router.push("/admin-dashboard");
       } else {
@@ -51,55 +46,62 @@ export default function LoginPage() {
 
   return (
     <div
-      className="min-h-screen flex items-center justify-center bg-cover bg-center p-4"
+      className="min-h-screen flex flex-col justify-between bg-cover bg-center p-4"
       style={{
         backgroundImage: "url('/login.jpg')",
         backgroundColor: 'rgba(0, 0, 0, 0.71)',
         backgroundBlendMode: 'overlay',
       }}
     >
-      <form
-        onSubmit={handleLogin}
-        className="w-full max-w-md bg-white/80 backdrop-blur-md rounded-3xl shadow-xl p-8 space-y-6 border border-white/40"
-      >
-        <h1 className="text-3xl font-extrabold text-center text-[#5C068C] tracking-tight">
-          Sahaya Sakhi Login
-        </h1>
-  
-        <input
-          type="email"
-          className="border border-gray-300 p-3 w-full rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-[#5C068C]"
-          placeholder="Email"
-          value={email}
-          onChange={e => setEmail(e.target.value)}
-          required
-        />
-  
-        <div className="relative">
+      <div className="flex-grow flex items-center justify-center">
+        <form
+          onSubmit={handleLogin}
+          className="w-full max-w-md bg-white/80 backdrop-blur-md rounded-3xl shadow-xl p-8 space-y-6 border border-white/40"
+        >
+          <h1 className="text-3xl font-extrabold text-center text-[#5C068C] tracking-tight">
+            Sahaya Sakhi Login
+          </h1>
+
           <input
-            type={showPassword ? 'text' : 'password'}
-            className="border border-gray-300 p-3 w-full rounded-xl pr-12 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#5C068C]"
-            placeholder="Password"
-            value={password}
-            onChange={e => setPassword(e.target.value)}
+            type="email"
+            className="border border-gray-300 p-3 w-full rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-[#5C068C]"
+            placeholder="Email"
+            value={email}
+            onChange={e => setEmail(e.target.value)}
             required
           />
+
+          <div className="relative">
+            <input
+              type={showPassword ? 'text' : 'password'}
+              className="border border-gray-300 p-3 w-full rounded-xl pr-12 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#5C068C]"
+              placeholder="Password"
+              value={password}
+              onChange={e => setPassword(e.target.value)}
+              required
+            />
+            <button
+              type="button"
+              onClick={() => setShowPassword(prev => !prev)}
+              className="absolute right-3 top-3 text-gray-500 hover:text-[#5C068C] transition"
+            >
+              {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+            </button>
+          </div>
+
           <button
-            type="button"
-            onClick={() => setShowPassword(prev => !prev)}
-            className="absolute right-3 top-3 text-gray-500 hover:text-[#5C068C] transition"
+            type="submit"
+            className="bg-[#5C068C] hover:bg-[#45045f] text-white px-6 py-3 rounded-full w-full font-semibold shadow-md transition"
           >
-            {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+            Login
           </button>
-        </div>
-  
-        <button
-          type="submit"
-          className="bg-[#5C068C] hover:bg-[#45045f] text-white px-6 py-3 rounded-full w-full font-semibold shadow-md transition"
-        >
-          Login
-        </button>
-      </form>
+        </form>
+      </div>
+
+      {/* FOOTER */}
+      <footer className="text-center py-4 text-sm text-white">
+        © {new Date().getFullYear()} Sahaya Sakhi. All rights reserved to <span className="font-semibold">Anuhya Mattaparthi</span>.
+      </footer>
     </div>
   );
 }
